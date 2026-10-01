@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>السيرة النبوية — المختصر في السيرة للشيخ موسى العازمي ومختصر ابن هشام</title>
+<meta name="description" content="استمع إلى كتاب «المختصر في السيرة النبوية» للشيخ موسى العازمي، وتصفّح مختصر السيرة لابن هشام.">
+<meta name="theme-color" content="#5a1a35">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="السيرة النبوية">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#7a2745;--bg2:#3f1226;--card:rgba(255,255,255,.07);--line:rgba(244,213,132,.28);--ink:#fff4ea;--muted:#e3bccb;--gold:#f4d584;--gold2:#e0a93f;--pink:#ff8fb8;--dk:#4a1428;--r:16px}
+*{box-sizing:border-box}
+html{background:#43132a;scroll-behavior:smooth}
+body{margin:0;min-height:100vh;background:linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 75%);color:var(--ink);font-family:'Tajawal',Tahoma,sans-serif;line-height:1.8;font-size:17px}
+a{color:var(--gold)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.ticker{border-bottom:2px solid var(--gold);background:rgba(0,0,0,.18);overflow:hidden;white-space:nowrap;padding:6px 0;font-family:'Amiri',serif;font-size:1.25rem;color:var(--gold)}
+.track{display:inline-flex;gap:26px;animation:tk 70s linear infinite}
+.track i{font-style:normal;color:var(--pink)}
+@keyframes tk{to{transform:translateX(50%)}}
+@media (prefers-reduced-motion:reduce){.track{animation:none}}
+.hero{text-align:center;padding:5vh 5vw 2vh}
+.hero h1{font-size:clamp(2.2rem,7vw,3.2rem);line-height:1.3;margin:0;color:var(--gold)}
+.hero p{margin:0 0 14px;color:var(--muted)}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:7px 20px;border-radius:99px;font:inherit;font-size:.95rem;cursor:pointer;text-decoration:none;display:inline-block}
+.btn:hover{border-color:var(--gold)}
+.btn:disabled{opacity:.4;cursor:default}
+.btn.gold{background:linear-gradient(#f8e3a0,var(--gold2));color:var(--dk);border:0;font-weight:700}
+#insHelp{max-width:560px;margin:14px auto 0;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:12px 16px;font-size:.95rem}
+.tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;padding:10px 5vw}
+.tabs button{padding:10px 24px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-weight:500;cursor:pointer}
+.tabs button[aria-selected="true"]{background:linear-gradient(#f8e3a0,var(--gold2));color:var(--dk);border-color:transparent;font-weight:700}
+.view{max-width:980px;margin:auto;padding:3vh 5vw 5vh}
+.view[hidden]{display:none}
+h2{font-size:1.9rem;margin:0 0 2px;color:var(--gold)}
+.sub{color:var(--muted);margin:0 0 20px}
+.box,.now,.page,.card,ul.list button{background:var(--card);border:1px solid var(--line);border-radius:var(--r)}
+.player{display:grid;grid-template-columns:1fr 1.1fr;gap:20px;align-items:start}
+.now{padding:20px;position:sticky;top:12px}
+.now h3{margin:0 0 4px;font-size:1.4rem;color:var(--gold)}
+.now p{margin:0 0 12px;color:var(--muted);font-size:.95rem}
+.now audio{width:100%;margin:6px 0 10px}
+.now .msg{background:rgba(244,213,132,.14);border-radius:10px;padding:10px 12px;font-size:.92rem}
+ul.list{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+ul.list button{width:100%;text-align:right;display:flex;gap:12px;align-items:center;padding:12px 14px;color:var(--ink);font:inherit;cursor:pointer}
+ul.list button[aria-current="true"]{border-color:var(--gold);background:rgba(244,213,132,.15)}
+ul.list .n{flex:none;width:34px;height:34px;border-radius:50%;background:rgba(244,213,132,.18);color:var(--gold);display:grid;place-items:center;font-weight:700}
+ul.list small{display:block;color:var(--muted)}
+.book{display:grid;grid-template-columns:240px 1fr;gap:24px}
+.toc{display:grid;gap:6px;align-content:start;position:sticky;top:12px}
+.toc button{text-align:right;padding:9px 12px;border-radius:10px;border:1px solid transparent;background:none;color:var(--ink);font:inherit;cursor:pointer}
+.toc button[aria-current="true"]{background:rgba(244,213,132,.15);border-color:var(--gold);font-weight:700}
+.page{padding:clamp(18px,4vw,38px)}
+.page h3{font-size:1.8rem;margin:0 0 12px;color:var(--gold)}
+.page .txt{font-family:'Amiri',serif;font-size:var(--fs,1.3rem);line-height:2.1}
+.page .txt p{margin:0 0 .9em}
+.tools{display:flex;gap:8px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+.pager{display:flex;justify-content:space-between;margin-top:18px}
+.note{font-size:.88rem;color:var(--muted);border-top:1px dashed var(--line);margin-top:20px;padding-top:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{padding:14px 16px}
+.card b{display:block;color:var(--gold);font-size:1.05rem}
+.card span{color:var(--muted);font-size:.93rem}
+.fnote{background:rgba(244,213,132,.14);border-radius:var(--r);padding:12px 16px;margin-bottom:14px;font-size:.95rem}
+footer{text-align:center;color:var(--muted);padding:4vh 5vw;font-size:.92rem}
+@media (max-width:760px){.player,.book{grid-template-columns:1fr}.now,.toc{position:static}.toc{grid-auto-flow:column;overflow-x:auto;padding-bottom:6px}.toc button{white-space:nowrap}}
+</style>
+</head>
+<body>
+<div class="ticker" aria-hidden="true"><div class="track" id="track"></div></div>
+<header class="hero">
+  <h1>السيرة النبوية</h1>
+  <p>استمع ▪ اقرأ ▪ تعرّف</p>
+  <button class="btn gold" id="install">⬇ تثبيت التطبيق</button>
+  <div id="insHelp" hidden></div>
+</header>
+<nav class="tabs" id="views" role="tablist"></nav>
+
+<section id="audio" class="view">
+  <h2>السيرة مسموعة</h2>
+  <p class="sub">اختر الحلقة، وهي مناسبة للكبار والصغار.</p>
+  <div class="player">
+    <div class="now" aria-live="polite">
+      <h3 id="nTitle"></h3>
+      <p id="nDesc"></p>
+      <div id="nBox"></div>
+    </div>
+    <ul class="list" id="eps"></ul>
+  </div>
+</section>
+
+<section id="book" class="view">
+  <h2>مختصر السيرة لابن هشام</h2>
+  <p class="sub">تصفّح محاور الكتاب فصلاً فصلاً.</p>
+  <div class="book">
+    <div class="toc" id="toc"></div>
+    <article class="page">
+      <div class="tools">
+        <span>حجم الخط</span>
+        <button class="btn" id="fMinus" aria-label="تصغير الخط">أ−</button>
+        <button class="btn" id="fPlus" aria-label="تكبير الخط">أ+</button>
+      </div>
+      <h3 id="cTitle"></h3>
+      <div class="txt" id="cTxt"></div>
+      <div class="pager">
+        <button class="btn" id="next">التالي ‹</button>
+        <button class="btn" id="prev">› السابق</button>
+      </div>
+      <p class="note">هذه الفصول ملخصات بصياغة مبسطة على ترتيب السيرة. للنص الكامل لكتاب ابن هشام ارجع إلى طبعة موثوقة، أو ضع نص الفصول في المصفوفة <code>CHAPTERS</code> داخل هذا الملف.</p>
+    </article>
+  </div>
+</section>
+
+<section id="family" class="view">
+  <h2>آل النبي ﷺ وصحابته</h2>
+  <p class="sub">أولاده وزوجاته، والخلفاء الراشدون، والعشرة المبشرون بالجنة رضي الله عنهم.</p>
+  <div class="tabs" id="ftabs" role="tablist"></div>
+  <div class="fnote" id="fnote"></div>
+  <div class="grid" id="fgrid"></div>
+</section>
+
+<footer>نسأل الله أن ينفع بهذا العمل. صلى الله وسلم على نبينا محمد.</footer>
+
+<script>
+/* ===== الصوتيات =====
+   ضع رابط ملف mp3 مباشرًا في src، أو رابط تضمين يوتيوب مثل:
+   https://www.youtube.com/embed/VIDEO_ID
+   وإن تُرك src فارغًا يظهر زر بحث عن الحلقة. */
+const AB = "تأليف الشيخ موسى العازمي، قراءة د. علي بشير أحمد";
+const A = n => "https://archive.org/download/Mokhtasar_fi_Sirra/0"+n+".mp3";
+const EPS = [
+  {title:"الفترة المكية", desc:AB, src:A(1)},
+  {title:"الفترة المدنية (الجزء 1)", desc:AB, src:A(2)},
+  {title:"الفترة المدنية (الجزء 2)", desc:AB, src:A(3)},
+  {title:"الفترة المدنية (الجزء 3 والأخير)", desc:AB, src:A(4)}
+];
+const SHEIKH = "الشيخ موسى العازمي";
+const $ = id => document.getElementById(id);
+
+function showEp(i){
+  const e = EPS[i];
+  $("nTitle").textContent = e.title;
+  $("nDesc").textContent = e.desc;
+  const box = $("nBox"); box.innerHTML = "";
+  if(!e.src){
+    const q = encodeURIComponent(SHEIKH + " السيرة النبوية " + e.title);
+    box.innerHTML = '<div class="msg">لم يُضف رابط هذه الحلقة بعد. <a target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query='+q+'">ابحث عنها في يوتيوب</a></div>';
+  } else if(/youtube\.com\/embed/.test(e.src)){
+    const f = document.createElement("iframe");
+    f.src = e.src; f.title = e.title; f.allowFullscreen = true;
+    f.style.cssText = "width:100%;aspect-ratio:16/9;border:0;border-radius:10px";
+    box.appendChild(f);
+  } else {
+    const a = document.createElement("audio"); a.controls = true; a.src = e.src; a.preload = "none";
+    box.appendChild(a);
+    const d = document.createElement("a"); d.className = "btn"; d.href = e.src; d.download = ""; d.target = "_blank"; d.rel = "noopener"; d.textContent = "⬇ تحميل الحلقة";
+    box.appendChild(d);
+  }
+  [...$("eps").children].forEach((li,k)=>li.firstChild.setAttribute("aria-current", k===i));
+}
+function renderEps(){
+  const ul = $("eps"); ul.innerHTML = "";
+  EPS.forEach((e,i)=>{
+    const li = document.createElement("li");
+    li.innerHTML = '<button><span class="n">'+(i+1)+'</span><span>'+e.title+'<small>المختصر في السيرة</small></span></button>';
+    li.firstChild.onclick = ()=>showEp(i);
+    ul.appendChild(li);
+  });
+  showEp(0);
+}
+
+/* ===== الكتاب ===== */
+const CHAPTERS = [
+ {t:"نسب النبي ﷺ ومولده", p:[
+  "هو محمد بن عبد الله بن عبد المطلب بن هاشم، من قريش، من ذرية إسماعيل بن إبراهيم عليهما السلام.",
+  "نسبه الشريف: محمد بن عبد الله بن عبد المطلب بن هاشم بن عبد مناف بن قصي بن كلاب بن مرة بن كعب بن لؤي بن غالب بن فهر بن مالك بن النضر بن كنانة بن خزيمة بن مدركة بن إلياس بن مضر بن نزار بن معد بن عدنان.",
+  "وُلد في مكة في عام الفيل، حين جاء أبرهة الحبشي بجيشه ليهدم الكعبة فرده الله. وكان أبوه عبد الله قد توفي قبل ولادته."]},
+ {t:"الطفولة والشباب", p:[
+  "استُرضع في بادية بني سعد، ثم ردّته مرضعته حليمة إلى أمه آمنة، وتوفيت أمه وهو صغير، فكفله جده عبد المطلب ثم عمه أبو طالب.",
+  "اشتهر بين قومه بالصادق الأمين، وعمل في التجارة، وتزوج خديجة رضي الله عنها. وشارك قومه في إعادة بناء الكعبة، وحكم بينهم في وضع الحجر الأسود حكمًا أرضى الجميع."]},
+ {t:"بدء الوحي والدعوة", p:[
+  "كان يتعبد في غار حراء، فنزل عليه جبريل عليه السلام في رمضان بأول آيات القرآن: «اقرأ».",
+  "بدأ الدعوة سرًّا، فآمنت خديجة، وأبو بكر، وعلي، وزيد بن حارثة رضي الله عنهم، ثم أُمر بالجهر بالدعوة فواجهه أهل مكة بالأذى والسخرية."]},
+ {t:"الصبر والهجرة إلى الحبشة", p:[
+  "اشتد أذى قريش على المسلمين الضعفاء، فأذن النبي ﷺ لبعضهم بالهجرة إلى الحبشة حيث ملك عادل هو النجاشي.",
+  "ثم حوصر بنو هاشم في الشعب سنوات، وتوفي أبو طالب وخديجة في عام واحد سُمّي عام الحزن، وخرج النبي ﷺ إلى الطائف يدعو أهلها فردوه. وفي تلك المرحلة كانت رحلة الإسراء والمعراج."]},
+ {t:"الهجرة إلى المدينة", p:[
+  "بايع أهل يثرب النبي ﷺ في العقبة، ثم هاجر مع أبي بكر الصديق، واختبآ في غار ثور ثلاثة أيام قبل أن يصلا المدينة.",
+  "أسس المسجد النبوي، وآخى بين المهاجرين والأنصار، وكتب وثيقة تنظّم العيش بين أهل المدينة على اختلاف دياناتهم."]},
+ {t:"غزوة بدر", p:[
+  "وقعت في رمضان من السنة الثانية للهجرة، وخرج المسلمون وهم نحو ثلاثمئة وقليل في مواجهة جيش قريش الأكبر عددًا وعدة.",
+  "نصر الله المسلمين نصرًا حاسمًا، وقُتل عدد من صناديد قريش، وعُوملت الأسرى معاملة حسنة، وافتُدي كثير منهم بتعليم أبناء المسلمين القراءة والكتابة."]},
+ {t:"غزوة أحد والخندق", p:[
+  "في أحد خالف الرماة أمر النبي ﷺ بترك مواقعهم فانقلب سير المعركة، وأصيب النبي ﷺ واستشهد حمزة رضي الله عنه وجمع من الصحابة. وتعلّم المسلمون درس الطاعة.",
+  "وفي غزوة الخندق حاصرت الأحزاب المدينة، فحفر المسلمون الخندق بمشورة سلمان الفارسي، وردّ الله الأحزاب بريح وجنود لم يروها."]},
+ {t:"صلح الحديبية وفتح مكة", p:[
+  "خرج النبي ﷺ معتمرًا في السنة السادسة فمنعته قريش، وانتهى الأمر بصلح الحديبية الذي بدا لبعضهم شديدًا، لكنه كان فتحًا مبينًا انتشر الإسلام بعده.",
+  "ولما نقضت قريش العهد سار النبي ﷺ إلى مكة في السنة الثامنة، ودخلها فاتحًا متواضعًا وعفا عن أهلها قائلاً: اذهبوا فأنتم الطلقاء."]},
+ {t:"حجة الوداع ووفاته ﷺ", p:[
+  "حجّ النبي ﷺ في السنة العاشرة، وخطب في الناس خطبة عظيمة أكد فيها حرمة الدماء والأموال، وأوصى بالنساء، وبالتمسك بكتاب الله.",
+  "ثم مرض ﷺ في ربيع الأول من السنة الحادية عشرة، وتوفي في المدينة المنورة في بيت عائشة رضي الله عنها، وتولى أبو بكر الصديق الخلافة بعده."]}
+];
+let ch = 0, fs = 1.3;
+function showCh(i){
+  ch = Math.max(0, Math.min(CHAPTERS.length-1, i));
+  const c = CHAPTERS[ch];
+  $("cTitle").textContent = c.t;
+  $("cTxt").innerHTML = c.p.map(x=>"<p>"+x+"</p>").join("");
+  [...$("toc").children].forEach((b,k)=>b.setAttribute("aria-current", k===ch));
+  $("prev").disabled = ch===0; $("next").disabled = ch===CHAPTERS.length-1;
+}
+CHAPTERS.forEach((c,i)=>{
+  const b = document.createElement("button"); b.textContent = c.t; b.onclick = ()=>showCh(i);
+  $("toc").appendChild(b);
+});
+$("prev").onclick = ()=>showCh(ch-1);
+$("next").onclick = ()=>showCh(ch+1);
+function setFs(v){ fs = Math.max(1, Math.min(2, v)); document.querySelector(".page").style.setProperty("--fs", fs+"rem"); }
+$("fPlus").onclick = ()=>setFs(fs+.1);
+$("fMinus").onclick = ()=>setFs(fs-.1);
+
+/* ===== الآل والصحابة ===== */
+const FAM = [
+ {k:"أولاده ﷺ", note:"له من الأبناء ثلاثة ذكور وأربع بنات. كل أولاده من خديجة رضي الله عنها إلا إبراهيم فأمه مارية القبطية. وتوفي الأبناء الذكور صغارًا، وتوفيت البنات في حياته إلا فاطمة فتوفيت بعده بنحو ستة أشهر.", items:[
+  ["القاسم","أكبر أولاده، وبه يكنى ﷺ أبا القاسم، وتوفي صغيرًا قبل البعثة."],
+  ["زينب","كبرى بناته، تزوجت أبا العاص بن الربيع."],
+  ["رقية","تزوجها عثمان بن عفان وهاجرت معه إلى الحبشة، وتوفيت يوم بدر."],
+  ["أم كلثوم","تزوجها عثمان بعد رقية، فسمي ذا النورين، وتوفيت سنة تسع للهجرة."],
+  ["فاطمة الزهراء","تزوجها علي بن أبي طالب، وهي أم الحسن والحسين."],
+  ["عبد الله","ولد بعد البعثة ويلقب بالطيب والطاهر، وتوفي صغيرًا."],
+  ["إبراهيم","ولد في المدينة من مارية القبطية، وتوفي وهو رضيع."]]},
+ {k:"زوجاته ﷺ", note:"تزوج ﷺ إحدى عشرة امرأة على المشهور، وهن أمهات المؤمنين. توفيت خديجة وزينب بنت خزيمة في حياته، وتوفي ﷺ عن تسع.", items:[
+  ["خديجة بنت خويلد","أول زوجاته وأول من آمن به، ولم يتزوج عليها حتى توفيت."],
+  ["سودة بنت زمعة","تزوجها بعد وفاة خديجة."],
+  ["عائشة بنت أبي بكر","بنت الصديق، وكانت من أكثر الصحابة رواية للعلم."],
+  ["حفصة بنت عمر","بنت عمر بن الخطاب، وكان عندها المصحف الذي جمعه أبو بكر."],
+  ["زينب بنت خزيمة","تلقب أم المساكين لكثرة إحسانها، وتوفيت بعد زواجها بأشهر."],
+  ["أم سلمة (هند بنت أبي أمية)","اشتهرت بحكمة رأيها يوم الحديبية."],
+  ["زينب بنت جحش","نزل في زواجها قرآن، وكانت كثيرة الصدقة."],
+  ["جويرية بنت الحارث","من بني المصطلق، وبزواجها أُطلق أسرى قومها."],
+  ["أم حبيبة (رملة بنت أبي سفيان)","هاجرت إلى الحبشة وصبرت على دينها."],
+  ["صفية بنت حيي","من نسل هارون عليه السلام، وأسلمت بعد خيبر."],
+  ["ميمونة بنت الحارث","آخر من تزوجها ﷺ، وتوفيت في سرف قرب مكة."]]},
+ {k:"الخلفاء الراشدون", note:"هم الأربعة الذين تولوا الخلافة بعد النبي ﷺ على منهاج النبوة، بترتيب خلافتهم.", items:[
+  ["أبو بكر الصديق","خلافته من سنة 11 إلى 13هـ. ثبّت الأمة بعد وفاة النبي ﷺ، وقاتل المرتدين، وأمر بجمع القرآن."],
+  ["عمر بن الخطاب","خلافته من سنة 13 إلى 23هـ. اتسعت الفتوحات في عهده، ودوّن الدواوين، وعُرف بعدله."],
+  ["عثمان بن عفان","خلافته من سنة 23 إلى 35هـ. جمع الناس على مصحف واحد، وجهز جيش العسرة."],
+  ["علي بن أبي طالب","خلافته من سنة 35 إلى 40هـ. ابن عم النبي ﷺ وزوج فاطمة، وكان من أعلم الصحابة بالقضاء."]]},
+ {k:"العشرة المبشرون بالجنة", note:"سماهم النبي ﷺ في حديث رواه أبو داود والترمذي، ولا يعني ذلك أن غيرهم لا يدخل الجنة.", items:[
+  ["أبو بكر الصديق","صاحب النبي ﷺ في الهجرة وفي الغار."],
+  ["عمر بن الخطاب","الفاروق، فرّق الله به بين الحق والباطل."],
+  ["عثمان بن عفان","ذو النورين، وصاحب بئر رومة وجيش العسرة."],
+  ["علي بن أبي طالب","أول من أسلم من الصبيان، وحامل لواء خيبر."],
+  ["طلحة بن عبيد الله","وقى النبي ﷺ بنفسه يوم أحد."],
+  ["الزبير بن العوام","حواري رسول الله ﷺ، وابن عمته صفية."],
+  ["عبد الرحمن بن عوف","من السابقين إلى الإسلام، وكان تاجرًا كريمًا."],
+  ["سعد بن أبي وقاص","أول من رمى بسهم في سبيل الله، وقائد فتح القادسية."],
+  ["سعيد بن زيد","من السابقين الأولين، وابن عم عمر وزوج أخته."],
+  ["أبو عبيدة بن الجراح","أمين هذه الأمة، وقائد فتوح الشام."]]}
+];
+let fi = 0;
+function showFam(i){
+  fi = i; const g = FAM[i];
+  $("fnote").textContent = g.note;
+  $("fgrid").innerHTML = g.items.map(x=>'<div class="card"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join("");
+  [...$("ftabs").children].forEach((b,k)=>b.setAttribute("aria-selected", k===i));
+}
+FAM.forEach((g,i)=>{
+  const b = document.createElement("button"); b.role = "tab"; b.textContent = g.k; b.onclick = ()=>showFam(i);
+  $("ftabs").appendChild(b);
+});
+
+/* ===== التبويبات ===== */
+const VIEWS = [["audio","🎧 الاستماع"],["book","📖 الكتاب"],["family","👨‍👩‍👧 الآل والصحابة"]];
+function showView(v){
+  VIEWS.forEach(([id],i)=>{ $(id).hidden = id!==v; $("views").children[i].setAttribute("aria-selected", id===v); });
+  history.replaceState(null,"","#"+v);
+}
+VIEWS.forEach(([id,l])=>{ const b = document.createElement("button"); b.role = "tab"; b.textContent = l; b.onclick = ()=>showView(id); $("views").appendChild(b); });
+
+/* ===== الشريط العلوي ===== */
+const TK = ["«وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِلْعَالَمِينَ» (الأنبياء ١٠٧)","«لَقَدْ كَانَ لَكُمْ فِي رَسُولِ اللَّهِ أُسْوَةٌ حَسَنَةٌ» (الأحزاب ٢١)","«وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ» (القلم ٤)","«لَقَدْ جَاءَكُمْ رَسُولٌ مِّنْ أَنفُسِكُمْ عَزِيزٌ عَلَيْهِ مَا عَنِتُّمْ» (التوبة ١٢٨)","«إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ» (الأحزاب ٥٦)","«لا يؤمن أحدكم حتى أكون أحبّ إليه من والده وولده والناس أجمعين» (متفق عليه)","«من سلك طريقًا يلتمس فيه علمًا سهّل الله له به طريقًا إلى الجنة» (رواه مسلم)"];
+const tk = TK.map(t=>"<span>"+t+"</span><i>✦</i>").join("");
+$("track").innerHTML = tk + tk;
+
+/* ===== التثبيت على الجوال والحاسوب ===== */
+if("serviceWorker" in navigator) addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}));
+let dp = null;
+addEventListener("beforeinstallprompt",e=>{ e.preventDefault(); dp = e; });
+addEventListener("appinstalled",()=>{ $("install").hidden = true; });
+if(matchMedia("(display-mode: standalone)").matches || navigator.standalone) $("install").hidden = true;
+$("install").onclick = async ()=>{
+  if(dp){ dp.prompt(); await dp.userChoice; dp = null; return; }
+  const ios = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  $("insHelp").textContent = ios
+    ? "على الآيفون والآيباد: افتح الموقع في Safari، اضغط زر المشاركة، ثم اختر «إضافة إلى الشاشة الرئيسية»."
+    : "على الأندرويد: افتح قائمة المتصفح ⋮ ثم اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية». على الحاسوب (Chrome أو Edge): اضغط أيقونة التثبيت في شريط العنوان.";
+  $("insHelp").hidden = false;
+};
+
+renderEps(); showCh(0); showFam(0);
+showView(VIEWS.some(v=>"#"+v[0]===location.hash) ? location.hash.slice(1) : "audio");
+</script>
+</body>
+</html>

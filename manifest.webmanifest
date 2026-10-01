@@ -1,0 +1,17 @@
+{
+  "name": "السيرة النبوية",
+  "short_name": "السيرة النبوية",
+  "description": "المختصر في السيرة النبوية صوتيًا، ومختصر السيرة لابن هشام، وآل النبي وصحابته.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#43132a",
+  "theme_color": "#5a1a35",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ]
+}
