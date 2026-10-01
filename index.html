@@ -459,7 +459,6 @@ FAM.forEach((g,i)=>{
 const VIEWS = [["audio","🎧 الاستماع"],["book","📖 الكتاب"],["family","👨‍👩‍👧 الآل والصحابة"]];
 function showView(v){
   VIEWS.forEach(([id],i)=>{ $(id).hidden = id!==v; $("views").children[i].setAttribute("aria-selected", id===v); });
-  history.replaceState(null,"","#"+v);
 }
 VIEWS.forEach(([id,l])=>{ const b = document.createElement("button"); b.role = "tab"; b.textContent = l; b.onclick = ()=>showView(id); $("views").appendChild(b); });
 
@@ -485,6 +484,12 @@ $("install").onclick = async ()=>{
 
 renderEps(); showCh(0); showFam(0);
 showView(VIEWS.some(v=>"#"+v[0]===location.hash) ? location.hash.slice(1) : "audio");
+/* ابدأ دائمًا من أعلى الصفحة (الشريط والعنوان) */
+if("scrollRestoration" in history) history.scrollRestoration = "manual";
+if(location.hash) history.replaceState(null,"",location.pathname+location.search);
+scrollTo(0,0);
+addEventListener("load",()=>scrollTo(0,0));
+addEventListener("pageshow",()=>scrollTo(0,0));
 </script>
 </body>
 </html>
