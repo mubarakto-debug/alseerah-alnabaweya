@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>السيرة النبوية — المختصر في السيرة للشيخ موسى العازمي ومختصر ابن هشام</title>
-<meta name="description" content="استمع إلى كتاب «المختصر في السيرة النبوية» للشيخ موسى العازمي، وتصفّح مختصر السيرة لابن هشام.">
+<title>السيرة النبوية — المختصر في السيرة النبوية للشيخ موسى العازمي</title>
+<meta name="description" content="استمع إلى كتاب «المختصر في السيرة النبوية» للشيخ موسى العازمي، واقرأه كاملًا من الموقع.">
 <meta name="theme-color" content="#5a1a35">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icon-192.png">
@@ -57,9 +57,14 @@ ul.list button[aria-current="true"]{border-color:var(--gold);background:rgba(244
 ul.list .n{flex:none;min-width:34px;height:34px;padding:0 8px;border-radius:99px;background:rgba(244,213,132,.18);color:var(--gold);display:grid;place-items:center;font-weight:700}
 ul.list small{display:block;color:var(--muted)}
 .book{display:grid;grid-template-columns:240px 1fr;gap:24px}
-.toc{display:grid;gap:6px;align-content:start;position:sticky;top:12px}
+.toc{display:grid;gap:6px;align-content:start}
 .toc button{text-align:right;padding:9px 12px;border-radius:10px;border:1px solid transparent;background:none;color:var(--ink);font:inherit;cursor:pointer}
 .toc button[aria-current="true"]{background:rgba(244,213,132,.15);border-color:var(--gold);font-weight:700}
+.vtools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.vtools input{width:70px;padding:5px 8px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;text-align:center}
+.pv{direction:ltr;overflow:auto;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:8px;max-height:82vh}
+.pv canvas{background:#fff;border-radius:6px;max-width:none}
+.toc{max-height:82vh;overflow:auto}
 .page{padding:clamp(18px,4vw,38px)}
 .page h3{font-size:1.8rem;margin:0 0 12px;color:var(--gold)}
 .page .txt{font-family:'Amiri',serif;font-size:var(--fs,1.3rem);line-height:2.1}
@@ -73,7 +78,7 @@ ul.list small{display:block;color:var(--muted)}
 .card span{color:var(--muted);font-size:.93rem}
 .fnote{background:rgba(244,213,132,.14);border-radius:var(--r);padding:12px 16px;margin-bottom:14px;font-size:.95rem}
 footer{text-align:center;color:var(--muted);padding:4vh 5vw;font-size:.92rem}
-@media (max-width:760px){ul.list{max-height:55vh}.player,.book{grid-template-columns:1fr}.now,.toc{position:static}.toc{grid-auto-flow:column;overflow-x:auto;padding-bottom:6px}.toc button{white-space:nowrap}}
+@media (max-width:760px){ul.list{max-height:55vh}.player,.book{grid-template-columns:1fr}.now{position:static}.toc{grid-auto-flow:column;overflow-x:auto;padding-bottom:6px;max-height:none}.toc button{white-space:nowrap}}
 </style>
 </head>
 <body>
@@ -100,24 +105,22 @@ footer{text-align:center;color:var(--muted);padding:4vh 5vw;font-size:.92rem}
 </section>
 
 <section id="book" class="view">
-  <h2>مختصر السيرة لابن هشام</h2>
-  <p class="sub">تصفّح محاور الكتاب فصلاً فصلاً.</p>
+  <h2>المختصر في السيرة النبوية</h2>
+  <p class="sub">تأليف موسى بن راشد العازمي — الكتاب كاملاً، وهو نفس الكتاب المسموع في قسم الاستماع.</p>
   <div class="book">
     <div class="toc" id="toc"></div>
-    <article class="page">
-      <div class="tools">
-        <span>حجم الخط</span>
-        <button class="btn" id="fMinus" aria-label="تصغير الخط">أ−</button>
-        <button class="btn" id="fPlus" aria-label="تكبير الخط">أ+</button>
+    <div>
+      <div class="vtools">
+        <button class="btn" id="bNext">التالية ‹</button>
+        <label>صفحة <input id="bNum" type="number" min="1" value="1" inputmode="numeric"> من <b id="bTot">…</b></label>
+        <button class="btn" id="bPrev">› السابقة</button>
+        <button class="btn" id="zOut" aria-label="تصغير">−</button>
+        <button class="btn" id="zIn" aria-label="تكبير">+</button>
+        <a class="btn" href="book.pdf" download>⬇ تحميل PDF</a>
       </div>
-      <h3 id="cTitle"></h3>
-      <div class="txt" id="cTxt"></div>
-      <div class="pager">
-        <button class="btn" id="next">التالي ‹</button>
-        <button class="btn" id="prev">› السابق</button>
-      </div>
-      <p class="note">هذه الفصول ملخصات بصياغة مبسطة على ترتيب السيرة. للنص الكامل لكتاب ابن هشام ارجع إلى طبعة موثوقة، أو ضع نص الفصول في المصفوفة <code>CHAPTERS</code> داخل هذا الملف.</p>
-    </article>
+      <div class="pv" id="pv"><canvas id="cv"></canvas></div>
+      <p class="note" id="bMsg">سيُحمَّل الكتاب عند فتح هذا القسم.</p>
+    </div>
   </div>
 </section>
 
@@ -354,55 +357,63 @@ function renderEps(){
 }
 $("q").oninput = e=>{ const v = e.target.value.trim(); [...$("eps").children].forEach((li,k)=>{ li.hidden = v && !EPS[k].title.includes(v); }); };
 
-/* ===== الكتاب ===== */
-const CHAPTERS = [
- {t:"نسب النبي ﷺ ومولده", p:[
-  "هو محمد بن عبد الله بن عبد المطلب بن هاشم، من قريش، من ذرية إسماعيل بن إبراهيم عليهما السلام.",
-  "نسبه الشريف: محمد بن عبد الله بن عبد المطلب بن هاشم بن عبد مناف بن قصي بن كلاب بن مرة بن كعب بن لؤي بن غالب بن فهر بن مالك بن النضر بن كنانة بن خزيمة بن مدركة بن إلياس بن مضر بن نزار بن معد بن عدنان.",
-  "وُلد في مكة في عام الفيل، حين جاء أبرهة الحبشي بجيشه ليهدم الكعبة فرده الله. وكان أبوه عبد الله قد توفي قبل ولادته."]},
- {t:"الطفولة والشباب", p:[
-  "استُرضع في بادية بني سعد، ثم ردّته مرضعته حليمة إلى أمه آمنة، وتوفيت أمه وهو صغير، فكفله جده عبد المطلب ثم عمه أبو طالب.",
-  "اشتهر بين قومه بالصادق الأمين، وعمل في التجارة، وتزوج خديجة رضي الله عنها. وشارك قومه في إعادة بناء الكعبة، وحكم بينهم في وضع الحجر الأسود حكمًا أرضى الجميع."]},
- {t:"بدء الوحي والدعوة", p:[
-  "كان يتعبد في غار حراء، فنزل عليه جبريل عليه السلام في رمضان بأول آيات القرآن: «اقرأ».",
-  "بدأ الدعوة سرًّا، فآمنت خديجة، وأبو بكر، وعلي، وزيد بن حارثة رضي الله عنهم، ثم أُمر بالجهر بالدعوة فواجهه أهل مكة بالأذى والسخرية."]},
- {t:"الصبر والهجرة إلى الحبشة", p:[
-  "اشتد أذى قريش على المسلمين الضعفاء، فأذن النبي ﷺ لبعضهم بالهجرة إلى الحبشة حيث ملك عادل هو النجاشي.",
-  "ثم حوصر بنو هاشم في الشعب سنوات، وتوفي أبو طالب وخديجة في عام واحد سُمّي عام الحزن، وخرج النبي ﷺ إلى الطائف يدعو أهلها فردوه. وفي تلك المرحلة كانت رحلة الإسراء والمعراج."]},
- {t:"الهجرة إلى المدينة", p:[
-  "بايع أهل يثرب النبي ﷺ في العقبة، ثم هاجر مع أبي بكر الصديق، واختبآ في غار ثور ثلاثة أيام قبل أن يصلا المدينة.",
-  "أسس المسجد النبوي، وآخى بين المهاجرين والأنصار، وكتب وثيقة تنظّم العيش بين أهل المدينة على اختلاف دياناتهم."]},
- {t:"غزوة بدر", p:[
-  "وقعت في رمضان من السنة الثانية للهجرة، وخرج المسلمون وهم نحو ثلاثمئة وقليل في مواجهة جيش قريش الأكبر عددًا وعدة.",
-  "نصر الله المسلمين نصرًا حاسمًا، وقُتل عدد من صناديد قريش، وعُوملت الأسرى معاملة حسنة، وافتُدي كثير منهم بتعليم أبناء المسلمين القراءة والكتابة."]},
- {t:"غزوة أحد والخندق", p:[
-  "في أحد خالف الرماة أمر النبي ﷺ بترك مواقعهم فانقلب سير المعركة، وأصيب النبي ﷺ واستشهد حمزة رضي الله عنه وجمع من الصحابة. وتعلّم المسلمون درس الطاعة.",
-  "وفي غزوة الخندق حاصرت الأحزاب المدينة، فحفر المسلمون الخندق بمشورة سلمان الفارسي، وردّ الله الأحزاب بريح وجنود لم يروها."]},
- {t:"صلح الحديبية وفتح مكة", p:[
-  "خرج النبي ﷺ معتمرًا في السنة السادسة فمنعته قريش، وانتهى الأمر بصلح الحديبية الذي بدا لبعضهم شديدًا، لكنه كان فتحًا مبينًا انتشر الإسلام بعده.",
-  "ولما نقضت قريش العهد سار النبي ﷺ إلى مكة في السنة الثامنة، ودخلها فاتحًا متواضعًا وعفا عن أهلها قائلاً: اذهبوا فأنتم الطلقاء."]},
- {t:"حجة الوداع ووفاته ﷺ", p:[
-  "حجّ النبي ﷺ في السنة العاشرة، وخطب في الناس خطبة عظيمة أكد فيها حرمة الدماء والأموال، وأوصى بالنساء، وبالتمسك بكتاب الله.",
-  "ثم مرض ﷺ في ربيع الأول من السنة الحادية عشرة، وتوفي في المدينة المنورة في بيت عائشة رضي الله عنها، وتولى أبو بكر الصديق الخلافة بعده."]}
-];
-let ch = 0, fs = 1.3;
-function showCh(i){
-  ch = Math.max(0, Math.min(CHAPTERS.length-1, i));
-  const c = CHAPTERS[ch];
-  $("cTitle").textContent = c.t;
-  $("cTxt").innerHTML = c.p.map(x=>"<p>"+x+"</p>").join("");
-  [...$("toc").children].forEach((b,k)=>b.setAttribute("aria-current", k===ch));
-  $("prev").disabled = ch===0; $("next").disabled = ch===CHAPTERS.length-1;
+/* ===== الكتاب (PDF) ===== */
+const PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js";
+const PDFW = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+const CH = [["المقدمة",3],["النسب والمولد",5],["مبعث النبي ﷺ",21],["الصدع بالدعوة",28],["الهجرة إلى الحبشة",49],["الخروج إلى الطائف",103],["الإسراء والمعراج",108],["بيعة العقبة الأولى",148],["هجرة النبي ﷺ",164],["بناء المسجد النبوي",195],["غزوة بدر",222],["غزوة أحد",266],["غزوة الخندق",347],["غزوة بني قريظة",373],["صلح الحديبية",438],["غزوة خيبر",510],["عمرة القضاء",578],["غزوة مؤتة",594],["الفتح الأعظم",620],["غزوة حنين",663],["غزوة الطائف",679],["غزوة تبوك",699],["عام الوفود",737],["حجة الوداع",758],["مرض النبي ﷺ",814],["وفاة النبي ﷺ",832],["الفهرس",849]];
+let pdf = null, bp = 1, zoom = 1, busy = false, queued = null, bTotal = 0;
+try { bp = +localStorage.getItem("sira-page") || 1; } catch(e){}
+CH.forEach(([t,n])=>{ const b = document.createElement("button"); b.textContent = t; b.onclick = ()=>goPage(n); $("toc").appendChild(b); });
+function loadScript(src){ return new Promise((ok,no)=>{ const e = document.createElement("script"); e.src = src; e.onload = ok; e.onerror = no; document.head.appendChild(e); }); }
+async function ensureBook(){
+  if(pdf || busy) return;
+  busy = true; $("bMsg").textContent = "جارٍ تحميل الكتاب…";
+  try{
+    await loadScript(PDFJS);
+    pdfjsLib.GlobalWorkerOptions.workerSrc = PDFW;
+    pdf = await pdfjsLib.getDocument({url:"book.pdf"}).promise;
+    bTotal = pdf.numPages; $("bTot").textContent = bTotal; $("bNum").max = bTotal;
+    busy = false; $("bMsg").textContent = "";
+    await drawPage(Math.min(bp, bTotal));
+  }catch(err){
+    busy = false;
+    $("bMsg").innerHTML = 'تعذّر عرض الكتاب هنا. <a href="book.pdf" target="_blank" rel="noopener">افتح ملف PDF مباشرة</a>.';
+  }
 }
-CHAPTERS.forEach((c,i)=>{
-  const b = document.createElement("button"); b.textContent = c.t; b.onclick = ()=>showCh(i);
-  $("toc").appendChild(b);
+async function drawPage(n){
+  if(!pdf) return;
+  n = Math.max(1, Math.min(bTotal, n));
+  if(busy){ queued = n; return; }
+  busy = true; bp = n; $("bNum").value = n;
+  try{
+    const page = await pdf.getPage(n);
+    const base = page.getViewport({scale:1});
+    const w = Math.max(280, $("pv").clientWidth - 18);
+    const dpr = window.devicePixelRatio || 1;
+    const sc = (w / base.width) * zoom;
+    const vp = page.getViewport({scale: sc * dpr});
+    const cv = $("cv"); cv.width = vp.width; cv.height = vp.height;
+    cv.style.width = (vp.width / dpr) + "px"; cv.style.height = (vp.height / dpr) + "px";
+    await page.render({canvasContext: cv.getContext("2d"), viewport: vp}).promise;
+    $("pv").scrollTop = 0;
+    try { localStorage.setItem("sira-page", n); } catch(e){}
+    let cur = 0; CH.forEach(([,p],i)=>{ if(p <= n) cur = i; });
+    [...$("toc").children].forEach((b,k)=>b.setAttribute("aria-current", k===cur));
+  }catch(err){ $("bMsg").textContent = "تعذّر عرض هذه الصفحة."; }
+  busy = false;
+  if(queued){ const q = queued; queued = null; drawPage(q); }
+}
+function goPage(n){ if(!pdf){ bp = n; ensureBook(); } else drawPage(n); }
+$("bNext").onclick = ()=>goPage(bp+1);
+$("bPrev").onclick = ()=>goPage(bp-1);
+$("bNum").onchange = e=>goPage(+e.target.value || 1);
+$("zIn").onclick = ()=>{ zoom = Math.min(2.4, zoom + .2); drawPage(bp); };
+$("zOut").onclick = ()=>{ zoom = Math.max(.6, zoom - .2); drawPage(bp); };
+addEventListener("keydown", e=>{
+  if($("book").hidden || /INPUT/.test(e.target.tagName)) return;
+  if(e.key === "ArrowLeft") goPage(bp+1); else if(e.key === "ArrowRight") goPage(bp-1);
 });
-$("prev").onclick = ()=>showCh(ch-1);
-$("next").onclick = ()=>showCh(ch+1);
-function setFs(v){ fs = Math.max(1, Math.min(2, v)); document.querySelector(".page").style.setProperty("--fs", fs+"rem"); }
-$("fPlus").onclick = ()=>setFs(fs+.1);
-$("fMinus").onclick = ()=>setFs(fs-.1);
+let rz; addEventListener("resize", ()=>{ clearTimeout(rz); rz = setTimeout(()=>{ if(pdf && !$("book").hidden) drawPage(bp); }, 250); });
 
 /* ===== الآل والصحابة ===== */
 const FAM = [
@@ -458,6 +469,7 @@ FAM.forEach((g,i)=>{
 /* ===== التبويبات ===== */
 const VIEWS = [["audio","🎧 الاستماع"],["book","📖 الكتاب"],["family","👨‍👩‍👧 الآل والصحابة"]];
 function showView(v){
+  if(v==="book") setTimeout(ensureBook, 0);
   VIEWS.forEach(([id],i)=>{ $(id).hidden = id!==v; $("views").children[i].setAttribute("aria-selected", id===v); });
 }
 VIEWS.forEach(([id,l])=>{ const b = document.createElement("button"); b.role = "tab"; b.textContent = l; b.onclick = ()=>showView(id); $("views").appendChild(b); });
@@ -482,7 +494,7 @@ $("install").onclick = async ()=>{
   $("insHelp").hidden = false;
 };
 
-renderEps(); showCh(0); showFam(0);
+renderEps(); showFam(0);
 showView(VIEWS.some(v=>"#"+v[0]===location.hash) ? location.hash.slice(1) : "audio");
 /* ابدأ دائمًا من أعلى الصفحة (الشريط والعنوان) */
 if("scrollRestoration" in history) history.scrollRestoration = "manual";
