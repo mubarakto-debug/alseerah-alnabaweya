@@ -19,7 +19,7 @@
 :root{--bg1:#7a2745;--bg2:#3f1226;--card:rgba(255,255,255,.07);--line:rgba(244,213,132,.28);--ink:#fff4ea;--muted:#e3bccb;--gold:#f4d584;--gold2:#e0a93f;--pink:#ff8fb8;--dk:#4a1428;--r:16px}
 *{box-sizing:border-box}
 html{background:#43132a;scroll-behavior:smooth}
-body{margin:0;min-height:100vh;background:linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 75%);color:var(--ink);font-family:'Tajawal',Tahoma,sans-serif;line-height:1.8;font-size:17px}
+body{margin:0;min-height:100vh;background:linear-gradient(135deg,var(--bg1) 0%,var(--bg2) 75%);color:var(--ink);font-family:'Tajawal','Amiri',Tahoma,sans-serif;line-height:1.8;font-size:17px}
 a{color:var(--gold)}
 :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 .ticker{border-bottom:2px solid var(--gold);background:rgba(0,0,0,.18);overflow:hidden;white-space:nowrap;padding:6px 0;font-family:'Amiri',serif;font-size:1.25rem;color:var(--gold)}
@@ -60,9 +60,13 @@ ul.list small{display:block;color:var(--muted)}
 .toc{display:grid;gap:6px;align-content:start}
 .toc button{text-align:right;padding:9px 12px;border-radius:10px;border:1px solid transparent;background:none;color:var(--ink);font:inherit;cursor:pointer}
 .toc button[aria-current="true"]{background:rgba(244,213,132,.15);border-color:var(--gold);font-weight:700}
-.vtools{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.vtools{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:10px}
+.vtools .btn{padding:6px 14px}
+.vtools.bot{margin:12px 0 0}
+.vtools.bot .btn{min-width:130px}
+#toc{padding:7px 12px;border-radius:99px;border:1px solid var(--line);background:#4a1428;color:var(--ink);font:inherit;max-width:100%}
 .vtools input{width:70px;padding:5px 8px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;text-align:center}
-.pv{direction:ltr;overflow:auto;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:8px;max-height:82vh}
+.pv{direction:ltr;overflow-x:auto;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:8px}
 .pv canvas{background:#fff;border-radius:6px;max-width:none}
 .toc{max-height:82vh;overflow:auto}
 .page{padding:clamp(18px,4vw,38px)}
@@ -77,6 +81,18 @@ ul.list small{display:block;color:var(--muted)}
 .card b{display:block;color:var(--gold);font-size:1.05rem}
 .card span{color:var(--muted);font-size:.93rem}
 .fnote{background:rgba(244,213,132,.14);border-radius:var(--r);padding:12px 16px;margin-bottom:14px;font-size:.95rem}
+ul.list li{display:flex;gap:6px}
+ul.list li>button:first-child{flex:1;width:auto}
+ul.list .pg{width:50px;flex:none;justify-content:center;padding:0;font-size:1.2rem}
+.qbox{padding:20px;text-align:center}
+.qq{font-size:1.4rem;color:var(--gold);margin:0 0 14px;line-height:1.6}
+.qo{display:block;width:100%;margin:8px 0;padding:12px;border-radius:var(--r);border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit;font-size:1.1rem;cursor:pointer}
+.qo.ok{background:rgba(111,207,151,.25);border-color:#6fcf97}
+.qo.bad{background:rgba(255,143,184,.25);border-color:var(--pink)}
+.qf{min-height:1.8em;margin:8px 0;font-weight:700}
+.qs{font-size:2.4rem}
+.qp{color:var(--muted);font-size:.9rem;margin:0 0 10px}
+.qacts{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px}
 footer{text-align:center;color:var(--muted);padding:4vh 5vw;font-size:.92rem}
 @media (max-width:760px){ul.list{max-height:55vh}.player,.book{grid-template-columns:1fr}.now{position:static}.toc{grid-auto-flow:column;overflow-x:auto;padding-bottom:6px;max-height:none}.toc button{white-space:nowrap}}
 </style>
@@ -107,21 +123,27 @@ footer{text-align:center;color:var(--muted);padding:4vh 5vw;font-size:.92rem}
 <section id="book" class="view">
   <h2>المختصر في السيرة النبوية</h2>
   <p class="sub">تأليف موسى بن راشد العازمي — الكتاب كاملاً، وهو نفس الكتاب المسموع في قسم الاستماع.</p>
-  <div class="book">
-    <div class="toc" id="toc"></div>
-    <div>
-      <div class="vtools">
-        <button class="btn" id="bNext">التالية ‹</button>
-        <label>صفحة <input id="bNum" type="number" min="1" value="1" inputmode="numeric"> من <b id="bTot">…</b></label>
-        <button class="btn" id="bPrev">› السابقة</button>
-        <button class="btn" id="zOut" aria-label="تصغير">−</button>
-        <button class="btn" id="zIn" aria-label="تكبير">+</button>
-        <a class="btn" href="book.pdf" download>⬇ تحميل PDF</a>
-      </div>
-      <div class="pv" id="pv"><canvas id="cv"></canvas></div>
-      <p class="note" id="bMsg">سيُحمَّل الكتاب عند فتح هذا القسم.</p>
-    </div>
+  <div id="bookTop" class="vtools">
+    <select id="toc" aria-label="اذهب إلى فصل"></select>
+    <label>صفحة <input id="bNum" type="number" min="1" value="3" inputmode="numeric"> من <b id="bTot">…</b></label>
+    <button class="btn" id="zOut" aria-label="تصغير">−</button>
+    <button class="btn" id="zIn" aria-label="تكبير">+</button>
+    <a class="btn" href="book.pdf" download aria-label="تحميل الكتاب">⬇ PDF</a>
   </div>
+  <div class="pv" id="pv"><canvas id="cv"></canvas></div>
+  <div class="vtools bot">
+    <button class="btn gold" id="bPrev">› السابقة</button>
+    <button class="btn gold" id="bNext">التالية ‹</button>
+    <button class="btn" id="bQuiz">🧒 اختبر نفسك</button>
+  </div>
+  <p class="note" id="bMsg">سيُحمَّل الكتاب عند فتح هذا القسم.</p>
+</section>
+
+<section id="quiz" class="view">
+  <h2>مسابقة الأطفال</h2>
+  <p class="sub">اختر غزوة أو فصلاً، وأجب عن الأسئلة، ثم اقرأ الفصل في الكتاب.</p>
+  <div class="tabs" id="qtopics"></div>
+  <div class="box qbox" id="qbox"></div>
 </section>
 
 <section id="family" class="view">
@@ -319,7 +341,8 @@ const RAW = `001|النسب النبوي الشريف
 203|النظرة الأخيرة
 204|وفاة النبي صلى الله عليه وسلم
 205|الصلاة على النبي صلى الله عليه وسلم ودفنه`;
-const EPS = RAW.split("\n").map(l=>{ const [id,...t] = l.split("|"); return {id, title:t.join("|"), desc:AB, src:BASE+id+".mp3"}; });
+const EPG = [5, 6, 8, 8, 10, 10, 12, 13, 15, 17, 18, 19, 21, 23, 25, 27, 28, 33, 33, 36, 38, 40, 44, 47, 51, 54, 55, 57, 60, 63, 64, 67, 72, 73, 76, 78, 85, 89, 94, 97, 103, 107, 109, 110, 112, 114, 122, 122, 124, 127, 128, 130, 135, 135, 138, 140, 142, 145, 145, 148, 150, 151, 152, 157, 161, 164, 168, 173, 176, 180, 187, 194, 195, 201, 207, 212, 219, 222, 229, 234, 239, 247, 250, 256, 259, 266, 271, 275, 277, 285, 287, 293, 301, 306, 311, 313, 315, 321, 323, 328, 332, 336, 340, 347, 355, 361, 362, 367, 373, 379, 387, 401, 401, 410, 415, 423, 431, 438, 438, 456, 460, 469, 473, 475, 484, 487, 497, 500, 510, 517, 523, 528, 532, 538, 547, 550, 556, 566, 572, 578, 591, 594, 606, 612, 622, 632, 633, 643, 644, 651, 659, 661, 669, 674, 679, 686, 699, 703, 711, 719, 724, 732, 737, 742, 748, 757, 758, 771, 781, 782, 790, 799, 812, 814, 824, 829, 832, 843];
+const EPS = RAW.split("\n").map((l,k)=>{ const [id,...t] = l.split("|"); return {id, title:t.join("|"), desc:AB, src:BASE+id+".mp3", pg:EPG[k]}; });
 const SHEIKH = "الشيخ موسى العازمي";
 const $ = id => document.getElementById(id);
 
@@ -341,6 +364,7 @@ function showEp(i, auto){
     box.appendChild(a);
     const d = document.createElement("a"); d.className = "btn"; d.href = e.src; d.download = ""; d.target = "_blank"; d.rel = "noopener"; d.textContent = "⬇ تحميل الحلقة";
     box.appendChild(d);
+    const o = document.createElement("button"); o.className = "btn"; o.textContent = "📖 صفحتها في الكتاب"; o.onclick = ()=>openBook(e.pg); box.appendChild(o);
   }
   [...$("eps").children].forEach((li,k)=>li.firstChild.setAttribute("aria-current", k===i));
   if(auto) $("eps").children[i].scrollIntoView({block:"nearest"});
@@ -349,8 +373,9 @@ function renderEps(){
   const ul = $("eps"); ul.innerHTML = "";
   EPS.forEach((e,i)=>{
     const li = document.createElement("li");
-    li.innerHTML = '<button><span class="n">'+e.id.split("-").map(x=>+x).join("-")+'</span><span>'+e.title+'</span></button>';
+    li.innerHTML = '<button><span class="n">'+e.id.split("-").map(x=>+x).join("-")+'</span><span>'+e.title+'</span></button><button class="pg" title="افتح صفحتها في الكتاب" aria-label="افتح صفحتها في الكتاب">📖</button>';
     li.firstChild.onclick = ()=>showEp(i, true);
+    li.children[1].onclick = ()=>openBook(e.pg);
     ul.appendChild(li);
   });
   showEp(0);
@@ -362,8 +387,9 @@ const PDFJS = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js
 const PDFW = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
 const CH = [["المقدمة",3],["النسب والمولد",5],["مبعث النبي ﷺ",21],["الصدع بالدعوة",28],["الهجرة إلى الحبشة",49],["الخروج إلى الطائف",103],["الإسراء والمعراج",108],["بيعة العقبة الأولى",148],["هجرة النبي ﷺ",164],["بناء المسجد النبوي",195],["غزوة بدر",222],["غزوة أحد",266],["غزوة الخندق",347],["غزوة بني قريظة",373],["صلح الحديبية",438],["غزوة خيبر",510],["عمرة القضاء",578],["غزوة مؤتة",594],["الفتح الأعظم",620],["غزوة حنين",663],["غزوة الطائف",679],["غزوة تبوك",699],["عام الوفود",737],["حجة الوداع",758],["مرض النبي ﷺ",814],["وفاة النبي ﷺ",832],["الفهرس",849]];
 let pdf = null, bp = 1, zoom = 1, busy = false, queued = null, bTotal = 0;
-try { bp = +localStorage.getItem("sira-page") || 1; } catch(e){}
-CH.forEach(([t,n])=>{ const b = document.createElement("button"); b.textContent = t; b.onclick = ()=>goPage(n); $("toc").appendChild(b); });
+try { bp = +localStorage.getItem("sira-page") || 3; } catch(e){}
+CH.forEach(([t,n])=>{ const o = document.createElement("option"); o.textContent = t; o.value = n; $("toc").appendChild(o); });
+$("toc").onchange = e=>goPage(+e.target.value);
 function loadScript(src){ return new Promise((ok,no)=>{ const e = document.createElement("script"); e.src = src; e.onload = ok; e.onerror = no; document.head.appendChild(e); }); }
 async function ensureBook(){
   if(pdf || busy) return;
@@ -380,7 +406,7 @@ async function ensureBook(){
     $("bMsg").innerHTML = 'تعذّر عرض الكتاب هنا. <a href="book.pdf" target="_blank" rel="noopener">افتح ملف PDF مباشرة</a>.';
   }
 }
-async function drawPage(n){
+async function drawPage(n, jump){
   if(!pdf) return;
   n = Math.max(1, Math.min(bTotal, n));
   if(busy){ queued = n; return; }
@@ -395,15 +421,15 @@ async function drawPage(n){
     const cv = $("cv"); cv.width = vp.width; cv.height = vp.height;
     cv.style.width = (vp.width / dpr) + "px"; cv.style.height = (vp.height / dpr) + "px";
     await page.render({canvasContext: cv.getContext("2d"), viewport: vp}).promise;
-    $("pv").scrollTop = 0;
+    if(jump) $("bookTop").scrollIntoView({block:"start"});
     try { localStorage.setItem("sira-page", n); } catch(e){}
     let cur = 0; CH.forEach(([,p],i)=>{ if(p <= n) cur = i; });
-    [...$("toc").children].forEach((b,k)=>b.setAttribute("aria-current", k===cur));
+    $("toc").value = CH[cur][1];
   }catch(err){ $("bMsg").textContent = "تعذّر عرض هذه الصفحة."; }
   busy = false;
-  if(queued){ const q = queued; queued = null; drawPage(q); }
+  if(queued){ const q = queued; queued = null; drawPage(q, jump); }
 }
-function goPage(n){ if(!pdf){ bp = n; ensureBook(); } else drawPage(n); }
+function goPage(n){ if(!pdf){ bp = n; ensureBook(); } else drawPage(n, true); }
 $("bNext").onclick = ()=>goPage(bp+1);
 $("bPrev").onclick = ()=>goPage(bp-1);
 $("bNum").onchange = e=>goPage(+e.target.value || 1);
@@ -414,6 +440,58 @@ addEventListener("keydown", e=>{
   if(e.key === "ArrowLeft") goPage(bp+1); else if(e.key === "ArrowRight") goPage(bp-1);
 });
 let rz; addEventListener("resize", ()=>{ clearTimeout(rz); rz = setTimeout(()=>{ if(pdf && !$("book").hidden) drawPage(bp); }, 250); });
+
+/* ===== مسابقة الأطفال ===== */
+/* كل سؤال: [السؤال, "الإجابة الصحيحة|خيار|خيار"] */
+const QZ = [
+ {t:"النسب والمولد", page:5, q:[["ما اسم والد النبي ﷺ؟","عبد الله|أبو طالب|عبد المطلب"],["في أي مدينة وُلد النبي ﷺ؟","مكة المكرمة|المدينة المنورة|الطائف"],["في أي عام وُلد النبي ﷺ؟","عام الفيل|عام الحزن|عام الوفود"]]},
+ {t:"المبعث والدعوة", page:21, q:[["في أي غار نزل الوحي أول مرة؟","غار حراء|غار ثور|غار الكهف"],["ما أول كلمة نزلت من القرآن؟","اقرأ|قل|يا أيها الناس"],["من أول من آمن بالنبي ﷺ من النساء؟","خديجة رضي الله عنها|عائشة رضي الله عنها|فاطمة رضي الله عنها"]]},
+ {t:"الإسراء والمعراج", page:108, q:[["إلى أي مسجد أُسري بالنبي ﷺ؟","المسجد الأقصى|مسجد قباء|مسجد الخيف"],["أي ملك رافق النبي ﷺ في رحلته؟","جبريل عليه السلام|ميكائيل عليه السلام|إسرافيل عليه السلام"],["ما العبادة التي فُرضت في تلك الليلة؟","الصلاة|الصيام|الحج"]]},
+ {t:"الهجرة", page:164, q:[["من صحب النبي ﷺ في الهجرة؟","أبو بكر الصديق|عمر بن الخطاب|عثمان بن عفان"],["في أي غار اختبأ النبي ﷺ وصاحبه؟","غار ثور|غار حراء|غار الكهف"],["إلى أي مدينة هاجر النبي ﷺ؟","المدينة المنورة|الحبشة|الطائف"]]},
+ {t:"غزوة بدر", page:222, q:[["في أي شهر وقعت غزوة بدر؟","رمضان|شوال|رجب"],["كم كان عدد المسلمين تقريبًا في بدر؟","نحو ثلاثمئة وثلاثة عشر|نحو ألف|نحو ثلاثة آلاف"],["بمن أمدّ الله المسلمين في بدر؟","بالملائكة|بالفيلة|بالسفن"]]},
+ {t:"غزوة أحد", page:266, q:[["من هو أسد الله الذي استشهد في أحد؟","حمزة بن عبد المطلب|علي بن أبي طالب|خالد بن الوليد"],["كم رجلاً وضع النبي ﷺ من الرماة على الجبل؟","خمسين رجلاً|عشرة رجال|مئة رجل"],["ما سبب تغيّر المعركة بعد النصر الأول؟","ترك الرماة أماكنهم|نفاد الماء|قدوم المطر"]]},
+ {t:"غزوة الخندق", page:347, q:[["من أشار بحفر الخندق؟","سلمان الفارسي|بلال بن رباح|أبو ذر"],["ماذا تسمى غزوة الخندق أيضًا؟","غزوة الأحزاب|غزوة مؤتة|غزوة حنين"],["بماذا ردّ الله الأحزاب؟","بريح شديدة وجنود لم يروها|بالمطر فقط|بالثلج"]]},
+ {t:"صلح الحديبية", page:438, q:[["ما اسم البيعة التي كانت تحت الشجرة؟","بيعة الرضوان|بيعة العقبة|بيعة الحرب"],["ماذا أراد النبي ﷺ وأصحابه من خروجهم؟","أداء العمرة|القتال|التجارة"],["كيف سمّى الله صلح الحديبية؟","فتحًا مبينًا|هزيمة|حربًا"]]},
+ {t:"فتح مكة", page:659, q:[["في أي سنة هجرية كان فتح مكة؟","الثامنة|الأولى|العاشرة"],["ماذا قال النبي ﷺ لأهل مكة؟","اذهبوا فأنتم الطلقاء|لن أسامحكم|اخرجوا من مكة"],["ماذا فعل النبي ﷺ بالأصنام حول الكعبة؟","كسّرها وأزالها|تركها|نقلها إلى المدينة"]]},
+ {t:"غزوة تبوك", page:699, q:[["ماذا تسمى غزوة تبوك أيضًا؟","غزوة العسرة|غزوة الخندق|غزوة أحد"],["ضد من خرج المسلمون في تبوك؟","الروم|الفرس|الحبشة"],["من جهّز جيش العسرة بكثير من ماله؟","عثمان بن عفان|أبو سفيان|عمرو بن العاص"]]},
+ {t:"حجة الوداع والوفاة", page:758, q:[["كم حجة حجّها النبي ﷺ بعد الهجرة؟","حجة واحدة|حجتان|ثلاث حجج"],["في أي مدينة توفي النبي ﷺ؟","المدينة المنورة|مكة المكرمة|الطائف"],["من تولى الخلافة بعد النبي ﷺ؟","أبو بكر الصديق|عمر بن الخطاب|علي بن أبي طالب"]]}
+];
+let qt = 0, qi = 0, qsc = 0;
+const shuf = a => a.map(v=>[Math.random(),v]).sort((x,y)=>x[0]-y[0]).map(x=>x[1]);
+QZ.forEach((T,i)=>{ const b = document.createElement("button"); b.textContent = T.t; b.onclick = ()=>qStart(i); $("qtopics").appendChild(b); });
+function qStart(t){
+  qt = t; qi = 0; qsc = 0;
+  [...$("qtopics").children].forEach((b,k)=>b.setAttribute("aria-selected", k===t));
+  qShow();
+}
+function qShow(){
+  const T = QZ[qt], box = $("qbox"); box.innerHTML = "";
+  if(qi >= T.q.length){
+    const stars = "🌟".repeat(qsc) + "☆".repeat(T.q.length - qsc);
+    box.innerHTML = '<div class="qs">'+stars+'</div><h3 class="qq">'+(qsc===T.q.length?"ما شاء الله، ممتاز!":qsc>0?"أحسنت، حاول مرة أخرى للعلامة الكاملة!":"لا بأس، اقرأ الفصل وأعد المحاولة!")+'</h3><p class="qp">نتيجتك '+qsc+' من '+T.q.length+'</p><div class="qacts"></div>';
+    const acts = box.querySelector(".qacts");
+    [["🔁 إعادة",()=>qStart(qt)],["📖 اقرأ الفصل",()=>openBook(T.page)],["التالي ›",()=>qStart((qt+1)%QZ.length)]].forEach(([l,f],k)=>{ const b = document.createElement("button"); b.className = "btn"+(k===2?" gold":""); b.textContent = l; b.onclick = f; acts.appendChild(b); });
+    return;
+  }
+  const [q, o] = T.q[qi], opts = shuf(o.split("|").map((t,k)=>({t, c:k===0})));
+  box.innerHTML = '<p class="qp">'+T.t+' — سؤال '+(qi+1)+' من '+T.q.length+'</p><h3 class="qq"></h3><div class="qopts"></div><div class="qf" aria-live="polite"></div><div class="qacts"></div>';
+  box.querySelector(".qq").textContent = q;
+  const wrap = box.querySelector(".qopts"), fb = box.querySelector(".qf");
+  opts.forEach(op=>{
+    const b = document.createElement("button"); b.className = "qo"; b.textContent = op.t;
+    b.onclick = ()=>{
+      [...wrap.children].forEach((x,k)=>{ x.disabled = true; if(opts[k].c) x.classList.add("ok"); });
+      if(op.c){ qsc++; fb.textContent = "✅ أحسنت!"; } else { b.classList.add("bad"); fb.textContent = "❌ الإجابة الصحيحة باللون الأخضر"; }
+      const n = document.createElement("button"); n.className = "btn gold"; n.textContent = qi+1 < T.q.length ? "السؤال التالي ›" : "عرض النتيجة ›";
+      n.onclick = ()=>{ qi++; qShow(); }; box.querySelector(".qacts").appendChild(n); n.focus();
+    };
+    wrap.appendChild(b);
+  });
+}
+function openBook(n){
+  showView("book"); $("book").scrollIntoView({block:"start"}); goPage(n);
+}
+$("bQuiz").onclick = ()=>{ let k = 0; QZ.forEach((t,i)=>{ if(t.page <= bp) k = i; }); showView("quiz"); $("quiz").scrollIntoView({block:"start"}); qStart(k); };
 
 /* ===== الآل والصحابة ===== */
 const FAM = [
@@ -467,12 +545,12 @@ FAM.forEach((g,i)=>{
 });
 
 /* ===== التبويبات ===== */
-const VIEWS = [["audio","🎧 الاستماع"],["book","📖 الكتاب"],["family","👨‍👩‍👧 الآل والصحابة"]];
+const VIEWS = [["audio","🎧 الاستماع"],["book","📖 الكتاب"],["quiz","🧒 مسابقة الأطفال"],["family","👨‍👩‍👧 الآل والصحابة"]];
 function showView(v){
   if(v==="book") setTimeout(ensureBook, 0);
   VIEWS.forEach(([id],i)=>{ $(id).hidden = id!==v; $("views").children[i].setAttribute("aria-selected", id===v); });
 }
-VIEWS.forEach(([id,l])=>{ const b = document.createElement("button"); b.role = "tab"; b.textContent = l; b.onclick = ()=>showView(id); $("views").appendChild(b); });
+VIEWS.forEach(([id,l])=>{ const b = document.createElement("button"); b.role = "tab"; b.textContent = l; b.onclick = ()=>{ showView(id); $(id).scrollIntoView({block:"start"}); }; $("views").appendChild(b); });
 
 /* ===== الشريط العلوي ===== */
 const TK = ["«وَمَا أَرْسَلْنَاكَ إِلَّا رَحْمَةً لِلْعَالَمِينَ» (الأنبياء ١٠٧)","«لَقَدْ كَانَ لَكُمْ فِي رَسُولِ اللَّهِ أُسْوَةٌ حَسَنَةٌ» (الأحزاب ٢١)","«وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ» (القلم ٤)","«لَقَدْ جَاءَكُمْ رَسُولٌ مِّنْ أَنفُسِكُمْ عَزِيزٌ عَلَيْهِ مَا عَنِتُّمْ» (التوبة ١٢٨)","«إِنَّ اللَّهَ وَمَلَائِكَتَهُ يُصَلُّونَ عَلَى النَّبِيِّ» (الأحزاب ٥٦)","«لا يؤمن أحدكم حتى أكون أحبّ إليه من والده وولده والناس أجمعين» (متفق عليه)","«من سلك طريقًا يلتمس فيه علمًا سهّل الله له به طريقًا إلى الجنة» (رواه مسلم)"];
@@ -494,7 +572,7 @@ $("install").onclick = async ()=>{
   $("insHelp").hidden = false;
 };
 
-renderEps(); showFam(0);
+renderEps(); showFam(0); qStart(0);
 showView(VIEWS.some(v=>"#"+v[0]===location.hash) ? location.hash.slice(1) : "audio");
 /* ابدأ دائمًا من أعلى الصفحة (الشريط والعنوان) */
 if("scrollRestoration" in history) history.scrollRestoration = "manual";
