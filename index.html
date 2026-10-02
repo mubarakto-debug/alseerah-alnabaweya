@@ -565,7 +565,7 @@ function showEp(i, auto){
     f.style.cssText = "width:100%;aspect-ratio:16/9;border:0;border-radius:10px";
     box.appendChild(f);
   } else {
-    const a = document.createElement("audio"); a.controls = true; a.src = e.src; a.preload = "none"; a.autoplay = !!auto; a.onended = ()=>{ if(i+1<EPS.length) showEp(i+1, true); };
+    const a = document.createElement("audio"); a.controls = true; a.src = e.src; a.preload = "none"; a.autoplay = !!auto; a.onerror = ()=>{ if(box.querySelector(".msg")) return; const m = document.createElement("div"); m.className = "msg"; m.textContent = "تعذّر تحميل ملف هذه الحلقة: " + e.src + " — تأكد أن مجلد audio مرفوع بجانب index.html وأن اسم الملف مطابق تمامًا."; box.insertBefore(m, a.nextSibling); }; a.onended = ()=>{ if(i+1<EPS.length) showEp(i+1, true); };
     box.appendChild(a);
     const d = document.createElement("a"); d.className = "btn"; d.href = e.src; d.download = ""; d.target = "_blank"; d.rel = "noopener"; d.textContent = "⬇ تحميل الحلقة";
     box.appendChild(d);
