@@ -161,6 +161,8 @@ footer{text-align:center;color:var(--muted);padding:4vh 5vw;font-size:.92rem}
    ضع رابط ملف mp3 مباشرًا في src، أو رابط تضمين يوتيوب مثل:
    https://www.youtube.com/embed/VIDEO_ID
    وإن تُرك src فارغًا يظهر زر بحث عن الحلقة. */
+/* مكان ملفات الصوت: مجلد audio بجانب index.html، أو رابط خارجي ينتهي بـ / مثل https://archive.org/download/اسم-العنصر/ */
+const AUDIO_BASE = "https://archive.org/download/060_20261002/";
 const AB2 = "إعداد: الأستاذ محمد الصوياني — تقديم: حمد الدريهم";
 const RAW2 = `001_|مولد الرسول صلى الله عليه وسلم
 002_|عودة أهل مكة
@@ -546,7 +548,7 @@ const RAW2 = `001_|مولد الرسول صلى الله عليه وسلم
 382_|قبر يلفظ صاحبه
 383_|في بيت عِتبان سماحة وشدة
 384_|آية تريح المسلم من دعايات النفاق`;
-const EPS2 = RAW2.split("\n").map(l=>{ const [id,...t] = l.split("|"); return {id, title:t.join("|"), desc:AB2, src:"audio/"+id+".mp3", n:id.replace(/[_-]+$/,"").replace(/_/g,"-").replace(/^0+/,"")}; });
+const EPS2 = RAW2.split("\n").map(l=>{ const [id,...t] = l.split("|"); return {id, title:t.join("|"), desc:AB2, src:AUDIO_BASE+id+".mp3", n:id.replace(/[_-]+$/,"").replace(/_/g,"-").replace(/^0+/,"")}; });
 const EPS = EPS2;
 const SHEIKH = "الشيخ موسى العازمي";
 const $ = id => document.getElementById(id);
